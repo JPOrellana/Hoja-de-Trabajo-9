@@ -160,7 +160,42 @@ public class SplayTree<E extends Comparable<E>> {
         }
     }
     
+        /**
+     * @return the left
+     */
+    public SplayTree<E> getLeft() {
+        return left;
+    }
 
+    /**
+     * @return the right
+     */
+    public SplayTree<E> getRight() {
+        return right;
+    }
+
+    /**
+     * @return the parent
+     */
+    public SplayTree<E> getParent() {
+        return parent;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public E getValue(){
+        return val;
+    }
+
+    /**
+     * 
+     * @param value
+     */
+    public void setValue(E value){
+        val = value;
+    }    
 
     
 
