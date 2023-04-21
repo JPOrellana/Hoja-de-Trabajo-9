@@ -197,6 +197,62 @@ public class SplayTree<E extends Comparable<E>> {
         val = value;
     }    
 
+
+        /**
+     * Metodo para balancear el arbol con algortimo splay tree
+     * @param tree arbol que se movera a la raiz
+     */
+    private void balancear(SplayTree<E> tree){
+        //Repetir los movimientos hasta llegar a la raiz
+        while(tree.parent != null){
+            //Si el arbol esta a la izquierda del padre hacer zig
+            if(tree.getValue().compareTo(tree.getParent().getValue()) < 0){
+                zig(tree);
+            //Si esta a la derecha del padre hacer zag
+            }else{
+                zag(tree);
+            }
+        }
+    }
+
+    
+    /**
+     * Rotacion del arbol zig
+     * @param tree Arbol que se va a rotar
+     */
+    private void zig(SplayTree<E> tree){
+        tree.getRight().setParent(tree.getParent());
+        tree.getParent().setLeft(tree.getRight());
+
+        tree.setRight(tree.getParent());
+        tree.setParent(tree.getRight().getParent());
+        tree.getRight().setParent(tree);
+    }
+
+    /**
+     * Rotacion del arbol zag
+     * @param tree Arbol que se va a rotar
+     */
+    private void zag(SplayTree<E> tree){
+        tree.getLeft().setParent(tree.getParent());
+        tree.getParent().setRight(tree.getLeft());
+
+        tree.setLeft(tree.getParent());
+        tree.setParent(tree.getLeft().getParent());
+        tree.getLeft().setParent(tree);
+    }
+
+    public void inOrder(SplayTree<E> node) {
+        if (node.getLeft() != null) {
+            inOrder(node.getLeft());
+        }else{
+            System.out.println(node.getValue().toString());
+            if (node.getRight() != null) {
+                inOrder(node.getRight());
+            }
+        }
+    }
+
     
 
     
